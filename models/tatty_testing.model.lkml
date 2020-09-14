@@ -21,6 +21,34 @@ explore: events {
 explore: flights {}
 
 explore: inventory_items {
+
+    aggregate_table: rollup__products_brand_year {
+      query: {
+        dimensions: [products.brand]
+        measures: [products.count]
+        filters: [inventory_items.created_date: "2 years"]
+        timezone: "America/Los_Angeles"
+      }
+
+      materialization: {
+        persist_for: "24 hours"
+      }
+    }
+
+
+    aggregate_table: rollup__products_brand_day {
+      query: {
+        dimensions: [products.brand]
+        measures: [products.count]
+        filters: [inventory_items.created_date: "269 days"]
+        timezone: "America/Los_Angeles"
+      }
+
+      materialization: {
+        persist_for: "24 hours"
+      }
+    }
+
   join: products {
     type: left_outer
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
