@@ -22,30 +22,31 @@ explore: flights {}
 
 explore: inventory_items {
 
-    aggregate_table: rollup__products_brand_day {
-      query: {
-        dimensions: [inventory_items.created_date, products.brand]
-        measures: [inventory_items.count]
-        filters: [inventory_items.created_date: "269 days"]
-        timezone: "America/Los_Angeles"
-      }
-
-      materialization: {
-        persist_for: "24 hours"
-      }
+  aggregate_table: rollup__products_brand_year {
+    query: {
+      dimensions: [inventory_items.created_date, products.brand]
+      measures: [inventory_items.count]
+      filters: [inventory_items.created_date: "2 years"]
+      timezone: "America/Los_Angeles"
     }
-    aggregate_table: rollup__products_brand_year {
-      query: {
-        dimensions: [inventory_items.created_date, products.brand]
-        measures: [inventory_items.count]
-        filters: [inventory_items.created_date: "2 years"]
-        timezone: "America/Los_Angeles"
-      }
 
-      materialization: {
-        persist_for: "24 hours"
-      }
+    materialization: {
+      persist_for: "24 hours"
     }
+  }
+
+  aggregate_table: rollup__products_brand_day {
+    query: {
+      dimensions: [inventory_items.created_date, products.brand]
+      measures: [inventory_items.count]
+      filters: [inventory_items.created_date: "269 days"]
+      timezone: "America/Los_Angeles"
+    }
+
+    materialization: {
+      persist_for: "24 hours"
+    }
+  }
 
   join: products {
     type: left_outer
