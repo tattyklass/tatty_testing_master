@@ -11,6 +11,10 @@ view: inventory_items {
   dimension: cost {
     type: number
     sql: ${TABLE}.cost ;;
+    link: {
+      label: "Dashboard link"
+      url: "/dashboards-next/4648?Cost={{ value }}"
+    }
   }
 
   dimension_group: created {
