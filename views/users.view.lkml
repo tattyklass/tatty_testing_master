@@ -10,11 +10,13 @@ view: users {
 
   dimension: age {
     type: number
+    tags: ["marketo: age"]
     sql: ${TABLE}.age ;;
   }
 
   dimension: city {
     type: string
+    tags: ["marketo: city"]
     sql: ${TABLE}.city ;;
   }
 
@@ -65,6 +67,7 @@ view: users {
 
   dimension: zip {
     type: zipcode
+    tags: ["marketo: zip"]
     sql: ${TABLE}.zip ;;
   }
 

@@ -29,6 +29,7 @@ view: inventory_items {
       year
     ]
     sql: ${TABLE}.created_at ;;
+    html: <div style="text-align:center">{{ rendered_value }}</div> ;;
   }
 
   dimension: product_id {
