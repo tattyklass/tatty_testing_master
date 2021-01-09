@@ -2,6 +2,8 @@ connection: "thelook"
 
 #test commit as Chris
 
+#test as non-deploy user
+
 # include all the views
 include: "/views/**/*.view"
 
